@@ -7,7 +7,7 @@ Package license: MIT
 
 Feedstock license: BSD 3-Clause
 
-Summary: Provides feedback about basic 'dplyr' operations.
+Summary: Provides feedback about 'dplyr' and 'tidyr' operations.
 
 
 
