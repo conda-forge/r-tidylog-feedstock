@@ -1,4 +1,4 @@
-{% set version = '0.1.0' %}
+{% set version = '0.2.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/tidylog_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/tidylog/tidylog_{{ version }}.tar.gz
-  sha256: 761af07b20bcee9d812b739d1ea000863953ae62b269c8ee430c28b0324b8d57
+  sha256: bbff70cac2d314cdfd9ca6b2644f9e8df28448e69eeb149437e0302b9d5c8912
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -25,12 +25,16 @@ requirements:
     - {{posix}}zip               # [win]
   host:
     - r-base
+    - r-clisymbols
     - r-dplyr
     - r-glue
+    - r-tidyr
   run:
     - r-base
+    - r-clisymbols
     - r-dplyr
     - r-glue
+    - r-tidyr
 
 test:
   commands:
@@ -40,8 +44,11 @@ test:
 about:
   home: https://github.com/elbersb/tidylog/
   license: MIT
-  summary: Provides feedback about basic 'dplyr' operations.
+  summary: Provides feedback about 'dplyr' and 'tidyr' operations.
   license_family: MIT
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE
 
 extra:
   recipe-maintainers:
@@ -49,12 +56,12 @@ extra:
 
 # Package: tidylog
 # Type: Package
-# Title: Logging for 'dplyr' Functions
-# Version: 0.1.0
+# Title: Logging for 'dplyr' and 'tidyr' Functions
+# Version: 0.2.0
 # Authors@R: person("Benjamin", "Elbers", email = "elbersb@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-5392-3448"))
-# Description: Provides feedback about basic 'dplyr' operations.
+# Description: Provides feedback about 'dplyr' and 'tidyr' operations.
 # License: MIT + file LICENSE
-# Imports: dplyr, glue
+# Imports: dplyr, tidyr, glue, clisymbols
 # Suggests: testthat, covr, lintr
 # Encoding: UTF-8
 # LazyData: true
@@ -62,8 +69,8 @@ extra:
 # BugReports: https://github.com/elbersb/tidylog/issues
 # RoxygenNote: 6.1.1
 # NeedsCompilation: no
-# Packaged: 2019-03-06 17:23:16 UTC; benjamin
+# Packaged: 2019-09-02 15:39:57 UTC; benjamin
 # Author: Benjamin Elbers [aut, cre] (<https://orcid.org/0000-0001-5392-3448>)
 # Maintainer: Benjamin Elbers <elbersb@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2019-03-08 15:10:03 UTC
+# Date/Publication: 2019-09-02 16:10:02 UTC
